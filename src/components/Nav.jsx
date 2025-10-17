@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const navItems = [
@@ -10,70 +10,63 @@ const navItems = [
   { path: '/resume', label: 'Full Resume' },
 ];
 
+// Reusable component for each navigation link to handle hover state
+const NavItem = ({ item }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Style for the link when it's active
+  const activeLinkStyle = {
+    color: '#0D1B2A', // Dark text for contrast
+    backgroundColor: '#FFC300', // A vibrant gold/amber for the active link
+    padding: '8px 15px',
+    borderRadius: '5px',
+    textDecoration: 'none',
+    fontWeight: 'bold',
+    transition: 'all 0.3s ease',
+    transform: 'scale(1.05)',
+  };
+
+  // Default style for an inactive link
+  const defaultLinkStyle = {
+    color: '#E0E1DD', // An off-white, soft text color
+    textDecoration: 'none',
+    padding: '8px 15px',
+    borderRadius: '5px',
+    transition: 'all 0.3s ease',
+  };
+
+  // Combine default style with hover style if the link is being hovered over
+  const combinedStyle = isHovered ? { ...defaultLinkStyle, ...activeLinkStyle } : defaultLinkStyle;
+
+  return (
+    <NavLink
+      to={item.path}
+      end={item.isEnd}
+      style={({ isActive }) => (isActive ? activeLinkStyle : combinedStyle)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {item.label}
+    </NavLink>
+  );
+};
+
+
 export default function Nav() {
-  // Updated style for the navigation container
+  // New style for the main navigation container
   const navContainerStyle = {
-    backgroundColor: '#27ae60', // A pleasant, medium green
+    backgroundColor: '#0D1B2A', // A very dark, deep blue from your banner
     padding: '15px 30px',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
     display: 'flex',
     justifyContent: 'center',
     gap: '30px',
   };
 
-  // Updated style for active links - still distinct, but with black text
-  const activeLinkStyle = {
-    backgroundColor: '#2ecc71', // A slightly lighter green for active state
-    color: '#000000', // Black text for active links
-    padding: '8px 15px',
-    borderRadius: '5px',
-    textDecoration: 'none',
-    fontWeight: 'bold',
-    transition: 'background-color 0.3s ease, color 0.3s ease, transform 0.3s ease',
-    // Hover effect for active links
-    '&:hover': {
-      transform: 'scale(1.05)', // Slightly enlarge on hover
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Add a stronger shadow on hover
-    }
-  };
-
-  // Default style for inactive links - now with black text and hover
-  const defaultLinkStyle = {
-    color: '#000000', // Black text for inactive links
-    textDecoration: 'none',
-    padding: '8px 15px',
-    borderRadius: '5px',
-    transition: 'background-color 0.3s ease, color 0.3s ease, transform 0.3s ease',
-    // Hover effect for inactive links
-    '&:hover': {
-      backgroundColor: '#2ecc71', // Light green background on hover
-      transform: 'scale(1.05)', // Slightly enlarge on hover
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Add a stronger shadow on hover
-    }
-  };
-
   return (
     <nav style={navContainerStyle}>
       {navItems.map((item) => (
-        <NavLink
-          key={item.path}
-          to={item.path}
-          end={item.isEnd}
-          className="nav-link"
-          style={({ isActive }) => ({
-            ...(isActive ? activeLinkStyle : defaultLinkStyle),
-            // Combining hover styles here since React's inline style doesn't support :hover
-            // directly. For true :hover, you'd typically use CSS classes or a library.
-            // This is a basic example; for more complex hover, external CSS is recommended.
-            // For now, we'll apply it directly for demonstration.
-            // Note: Inline styles don't natively support pseudo-classes like :hover.
-            // To achieve hover effects with inline styles, you usually need event handlers
-            // (onMouseEnter, onMouseLeave) or a CSS-in-JS library.
-            // For this example, I'll generate an image that reflects the intended visual.
-          })}
-        >
-          {item.label}
-        </NavLink>
+        <NavItem key={item.path} item={item} />
       ))}
     </nav>
   );
