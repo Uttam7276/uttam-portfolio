@@ -13,7 +13,7 @@ import Education from './pages/Education';
 import Experience from './pages/Experience';
 import Skills from './pages/Skills';
 import Hobbies from './pages/Hobbies';
-import Resume from './pages/Resume';
+import Resume from './pages/Resume.jsx';
 
 import './index.css';
 

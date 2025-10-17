@@ -7,7 +7,7 @@ const navItems = [
   { path: '/experience', label: 'Experience' },
   { path: '/skills', label: 'Skills' },
   { path: '/hobbies', label: 'Hobbies' },
-  { path: '/resume', label: 'Full Resume' },
+  { path: '/resume', label: 'Projects' },
 ];
 
 // Reusable component for each navigation link to handle hover state
