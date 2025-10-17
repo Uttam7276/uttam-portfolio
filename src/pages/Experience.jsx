@@ -23,10 +23,6 @@ export default function Experience() {
         <p>Working on personal projects and continuously learning new tools, frameworks, and technologies in web development.</p>
       </div>
     </section>
-
-    <footer style="text-align:center; padding: 20px; color: #666; font-size: 14px; border-top: 1px solid #ddd; margin-top: 40px;">
-      © 2025 Uttam Chaudhary
-    </footer>
   `;
 
   return <div dangerouslySetInnerHTML={{ __html: html }} />;
