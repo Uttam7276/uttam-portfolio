@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Import all your components
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
+// Try adding the .jsx extension
+import Header from './components/Header.jsx';
+import Nav from './components/Nav.jsx';
+import Footer from './components/Footer.jsx';
 
 // Import all your page components
 import Summary from './pages/Summary';
