@@ -8,7 +8,7 @@ export default function Header() {
   const headerStyle = {
     position: 'relative',
     width: '100%',
-    height: '400px',
+    height: '300px', // <-- Reduced height from 400px to 300px
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -22,23 +22,23 @@ export default function Header() {
   };
 
   const profilePicStyle = {
-    width: '150px',
-    height: '150px',
+    width: '120px', // <-- Reduced size from 150px
+    height: '120px', // <-- Reduced size from 150px
     borderRadius: '50%',
     objectFit: 'cover',
-    border: '5px solid #fff',
-    marginBottom: '20px',
+    border: '4px solid #fff', // <-- Slightly smaller border
+    marginBottom: '15px', // <-- Reduced margin
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
   };
 
   const nameStyle = {
-    fontSize: '2.5rem',
+    fontSize: '2.2rem', // <-- Reduced font size
     margin: '10px 0 5px 0',
     fontWeight: 'bold',
   };
 
   const titleStyle = {
-    fontSize: '1.2rem',
+    fontSize: '1.1rem', // <-- Reduced font size
     margin: '0',
   };
 
@@ -50,3 +50,4 @@ export default function Header() {
     </header>
   );
 }
+
